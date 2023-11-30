@@ -2,16 +2,18 @@ name: webhook-via-github
 services:
   app:
     container_name: javaApp
-    image: webhook-github:0.3
+    image: orenv3/webhook-github:0.3
     restart: always
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/audit
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/audit?autoReconnect=true
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
     ports:
       - "8080:8080"
     depends_on:
-      - db
+      db :
+       condition: service_healthy
+
 
   db:
     container_name: MySql
@@ -24,3 +26,7 @@ services:
       MYSQL_DATABASE: audit
     ports:
       - "33061:3306"
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      timeout: 20s
+      retries: 10
