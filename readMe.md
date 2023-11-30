@@ -26,9 +26,17 @@ The design is flexible to other events - the branch controller is an example.
 >
 
 
-#### Dummy input in order to try the API:
+### Try the API:
 
-{
+###### How to run
+>You can pull this App from DockerHub:
+> 
+>'docker compose up' will pull this 'auditDemo' App from DockerHub + pull MySql:8.0.27 with relevant configurations
+
+
+
+###### Dummy input
+>{
 "action": "opened",
 "number": 11,
 "pull_request": {
@@ -71,3 +79,4 @@ The design is flexible to other events - the branch controller is an example.
 },
 "sender": {}
 }
+
