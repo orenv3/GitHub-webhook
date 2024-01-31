@@ -32,10 +32,10 @@ The design is flexible to other events - the branch controller is an example.
 >You can pull this App from DockerHub:
 > 
 >'docker compose up' will pull this 'auditDemo' App from DockerHub + pull MySql:8.0.27 with relevant configurations
+> 'swagger UI' will show you the API URLs (http://localhost:8080/swagger-ui/index.html)
 
 
-
-###### Dummy input
+###### Dummy input (In order to create the first pullRequest)
 >{
 "action": "opened",
 "number": 11,
